@@ -6,17 +6,7 @@ curl http://localhost:8081/api/
 kubectl create serviceaccount myscript
 
 #### Create role with Deployment, Pod, Service permissions
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: script-role
-rules:
-- apiGroups: [""]
-  resources: ["pods", "services"]
-  verbs: ["get", "list", "delete"] 
-- apiGroups: ["apps"]
-  resources: ["deployments"]
-  verbs: ["get", "list", "delete"]
+kubectl apply -f myscript-role.yml
 
 #### Add Binding for serviceaccount
 kubectl create rolebinding script-role-binding --role=script-role --serviceaccount=default:myscript
