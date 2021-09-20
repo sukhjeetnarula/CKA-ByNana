@@ -45,14 +45,14 @@ curl -X GET $APISERVER/api --header "Authorization: Bearer $TOKEN" --cacert /etc
 
 curl -X GET $APISERVER/api --header "Authorization: Bearer $TOKEN" --cacert /etc/kubernetes/pki/ca.crt
 
-# List all deployments
+#### List all deployments
 curl -X GET $APISERVER/apis/apps/v1/namespaces/default/deployments --header "Authorization: Bearer $TOKEN" --cacert /etc/kubernetes/pki/ca.crt
 
-# List all services
+#### List all services
 curl -X GET $APISERVER/api/v1/namespaces/default/services --header "Authorization: Bearer $TOKEN" --cacert /etc/kubernetes/pki/ca.crt
 
-# Get a specific service or deployment
+#### Get a specific service or deployment
 curl -X GET $APISERVER/api/v1/namespaces/default/services/nginx-service --header "Authorization: Bearer $TOKEN" --cacert /etc/kubernetes/pki/ca.crt
 
-# Get all pod names
+#### Get all pod names
 curl -X GET $APISERVER/api/v1/namespaces/default/pods/pod-name/logs --header "Authorization: Bearer $TOKEN" --cacert /etc/kubernetes/pki/ca.crt
