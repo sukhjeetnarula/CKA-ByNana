@@ -1,7 +1,7 @@
 ##### all context commands
     kubectl config --help
 
-##### Show all contexts
+##### show all contexts
     kubectl config get-contexts
 
 ##### show current context
