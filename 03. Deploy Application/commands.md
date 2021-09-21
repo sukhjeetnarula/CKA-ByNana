@@ -1,4 +1,4 @@
-### kubectl commands
+### Kubectl commands
 
 ##### apply manifests
     kubectl apply -f nginx-deployment.yaml
