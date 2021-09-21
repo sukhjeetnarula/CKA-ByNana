@@ -11,23 +11,23 @@
 ### Configure Infrastructure
     sudo swapoff -a
 
-##### Set host names of nodes
+##### set host names of nodes
     sudo vim /etc/hosts
 
-##### Get priavate ips of each node and add this to each server 
+##### get priavate ips of each node and add this to each server 
     45.14.48.178 master
     45.14.48.179 worker1
     45.14.48.180 worker2
 
-##### We can now use these names instead of typing the IPs, when nodes talk to each other. After that, assign a hostname to each of these servers.
+##### we can now use these names instead of typing the IPs, when nodes talk to each other. After that, assign a hostname to each of these servers.
 
-##### On master server
+##### on master server
     sudo hostnamectl set-hostname master 
 
-##### On worker1 server
+##### on worker1 server
     sudo hostnamectl set-hostname worker1 
 
-##### On worker2 server
+##### on worker2 server
     sudo hostnamectl set-hostname worker2
 
 
@@ -38,7 +38,7 @@
     service kubelet status
     systemctl status kubelet
 
-### check extended logs of kubelet service
+### Check extended logs of kubelet service
     journalctl -u kubelet
 
 ### Access cluster as admin
@@ -76,14 +76,14 @@
     chmod u+x install-containerd.sh
     ./install-containerd.sh
 
-##### On master
+##### on master
     kubeadm token create --help
     kubeadm token create --print-join-command
 
-##### Copy the output command and execute on worker node as ROOT
+##### copy the output command and execute on worker node as ROOT
     sudo kubeadm join 172.31.43.99:6443 --token 9bds1l.3g9ypte9gf69b5ft --discovery-token-ca-cert-hash sha256:xxxx
 
-##### Start a test pod
+##### start a test pod
     kubectl run test --image=nginx
 
 
