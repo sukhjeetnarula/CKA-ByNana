@@ -28,7 +28,7 @@
     kubectl scale deployment {depl-name} --replicas 3
 
     kubectl scale deployment {depl-name} --replicas 5 --record
-    kubectl rollout history deployment {deployment-name}
+    kubectl rollout history deployment {depl-name}
 
 
 ##### create pods
