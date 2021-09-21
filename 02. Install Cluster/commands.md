@@ -48,16 +48,16 @@
 
 ### Kubectl commands
 
-#### get node information
+##### get node information
     kubectl get node
 
-#### get pods in kube-system namespace
+##### get pods in kube-system namespace
     kubectl get pod -n kube-system
 
-#### get pods from all namespaces
+##### get pods from all namespaces
     kubectl get pod -A
 
-#### get wide output
+##### get wide output
     kubectl get pod -n kube-system -o wide
 
 
