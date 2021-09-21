@@ -1,11 +1,11 @@
 ### Provision Infrastructure 
 
 #### move private key to .ssh folder and restrict access
-mv ~/Downloads/k8s-node.pem ~/.ssh
-chmod 400 ~/.ssh/k8s-node.pem
+    mv ~/Downloads/k8s-node.pem ~/.ssh
+    chmod 400 ~/.ssh/k8s-node.pem
 
 #### ssh into ec2 instance with its public ip
-ssh -i ~/.ssh/k8s-node.pem ubuntu@35.180.130.108
+    ssh -i ~/.ssh/k8s-node.pem ubuntu@35.180.130.108
 
 
 ### Configure Infrastructure
