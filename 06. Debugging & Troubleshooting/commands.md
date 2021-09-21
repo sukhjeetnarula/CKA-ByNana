@@ -22,7 +22,7 @@
     kubectl exec -it pod-name -- sh -c "netstat -lntp"
 
 
-### jsonpath output format
+### Jsonpath output format
     kubectl get node -o json
     kubectl get pod -o json 
 
