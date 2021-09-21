@@ -1,25 +1,25 @@
 ### Provision Infrastructure 
 
-#### move private key to .ssh folder and restrict access
+##### move private key to .ssh folder and restrict access
     mv ~/Downloads/k8s-node.pem ~/.ssh
     chmod 400 ~/.ssh/k8s-node.pem
 
-#### ssh into ec2 instance with its public ip
+##### ssh into ec2 instance with its public ip
     ssh -i ~/.ssh/k8s-node.pem ubuntu@35.180.130.108
 
 
 ### Configure Infrastructure
     sudo swapoff -a
 
-#### Set host names of nodes
+##### Set host names of nodes
     sudo vim /etc/hosts
 
-#### Get priavate ips of each node and add this to each server 
+##### Get priavate ips of each node and add this to each server 
     45.14.48.178 master
     45.14.48.179 worker1
     45.14.48.180 worker2
 
-#### We can now use these names instead of typing the IPs, when nodes talk to each other. After that, assign a hostname to each of these servers.
+##### We can now use these names instead of typing the IPs, when nodes talk to each other. After that, assign a hostname to each of these servers.
 
 ##### On master server
     sudo hostnamectl set-hostname master 
@@ -27,7 +27,7 @@
 ##### On worker1 server
     sudo hostnamectl set-hostname worker1 
 
-#### On worker2 server
+##### On worker2 server
     sudo hostnamectl set-hostname worker2
 
 
@@ -63,27 +63,27 @@
 
 ### Install pod network plugin
 
-#### download the manifest
+##### download the manifest
     wget "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" -O "weave.yaml"
 
-#### check weave net status
+##### check weave net status
     kubectl exec -n kube-system weave-net-1jkl6 -c weave -- /home/weave/weave --local status
 
 ### Join worker nodes
 
-#### create and execute script
+##### create and execute script
     vim install-containerd.sh
     chmod u+x install-containerd.sh
     ./install-containerd.sh
 
-#### On master
+##### On master
     kubeadm token create --help
     kubeadm token create --print-join-command
 
-#### Copy the output command and execute on worker node as ROOT
+##### Copy the output command and execute on worker node as ROOT
     sudo kubeadm join 172.31.43.99:6443 --token 9bds1l.3g9ypte9gf69b5ft --discovery-token-ca-cert-hash sha256:xxxx
 
-#### Start a test pod
+##### Start a test pod
     kubectl run test --image=nginx
 
 
